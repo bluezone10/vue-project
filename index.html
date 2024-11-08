@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Project</title>
+    <style>
+        #button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="appContainer">
+        Likes and React
+        {{ likes }} 
+        {{ heart }}
+        <button id="button" v-on:click="addLikes()">Add</button>
+        <button id="button" v-on:click="minusLikes()">Minus</button>
+        <button v-on:click="heart++">React</button>
+    </div>
+  
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  Vue.createApp({
+    data() {
+        return {
+            likes: 1,
+            heart: 0
+        }
+    },
+    methods: {
+        addLikes(){
+            this.likes++
+        },
+        minusLikes() {
+            if (this.likes > 0) {
+                this.likes--
+            } else {
+                return this.likes = 0
+            }
+            
+        }
+    }
+  }).mount('#appContainer')
+</script>
+</html>
